@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web practice</title>
+</head>
+<body>
+    <h2>hello everyone!</h2>
+    <p id="demo"> triangle have 3 sided:</p>
+    <button type="button" onclick="area()">click here!</button>
+    <h2>check the leap of day sunday</h2>
+    <button type="button" onclick="leapyear()">click to check leap year</button>
+    <h2>lets play some game<br> do you interested in this game?</h2>
+    <button type="button" onclick="game()">yes</button>
+    <button type="button" onclick="no">no</button>
+    <script>
+        function area()
+        {
+        var side1=prompt("enter side of first triangle");
+        var side2=prompt("enter side of second triangle");
+        var side3=prompt("enter side of third triangle");
+        var s=(side1+side1+side3)/2.0;
+        document.write("the sum of sided is: "+s);
+        var result=Math.sqrt(s*(s-side1)*(s-side2)*(s-side3));
+            document.write("<br>the area of triangle is: "+result);
+        } 
+        function leapyear()
+        { 
+            var n=prompt("ener the year");
+            for(var year=2002;year<=n;year++)
+            {
+                var d=new Date(year,0,1);
+                if(d.getDay()==0)
+                document.write("1st january is being sunday in "+year+"<br>");
+            }
+        } 
+        function game()
+        {
+            var a=prompt("guess the number between 1 to 5");
+            var num=Math.ceil(Math.random()*10);
+            if(a==num)
+            {
+                alert("well played!");
+            }
+            else
+            {
+                alert("try next time! "+num);
+            }
+        }
+        let day;
+switch (new Date().getDay()) {
+  case 0:
+    day = "Sunday";
+    break;
+  case 1:
+    day = "Monday";
+    break;
+  case 2:
+    day = "Tuesday";
+    break;
+  case 3:
+    day = "Wednesday";
+    break;
+  case 4:
+    day = "Thursday";
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case  6:
+    day = "Saturday";
+    break;
+  default:
+     day = "unknown";
+}
+document.getElementById("demo").innerHTML = "Today is " + day;
+    </script>
+</body>
+</html>
+
