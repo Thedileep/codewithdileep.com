@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/student_home.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .container {
+            margin: 20px auto;
+            width: 80%;
+        }
+        
+        .dashboard {
+            width: 40%;
+            float: left;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ccc;
+        }
+        
+        .attendance-chart {
+            width: 55%;
+            float: right;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ccc;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }        
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome, {{ user.first_name }} {{ user.last_name }}</h1>
+    </header>
+
+    <div class="container">
+        <div class="dashboard">
+            <h2>Dashboard</h2>
+            <ul>
+                <li>Total Subjects: {{ total_subjects }}</li>
+                <li>Total Attendance: {{ total_attendance }}</li>
+                <li>Present: {{ attendance_present }}</li>
+                <li>Absent: {{ attendance_absent }}</li>
+            </ul>
+        </div>
+
+        <div class="attendance-chart">
+            <h2>Attendance Chart</h2>
+    <canvas id="attendanceChart" width="400" height="200"></canvas>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Your Institute Name. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('attendanceChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Present', 'Absent'],
+                    datasets: [{
+                        label: 'Attendance',
+                        data: [{{ attendance_present }}, {{ attendance_absent }}],
+                        backgroundColor: ['#4caf50', '#f44336'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

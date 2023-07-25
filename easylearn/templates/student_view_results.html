@@ -1,0 +1,35 @@
+<!-- student_view_results.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color:green;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ student.first_name }}!</h1>
+    <h2>Results</h2>
+    <ul>
+        {% for result in results %}
+        <li>{{ result.subject.name }}: {{ result.marks }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

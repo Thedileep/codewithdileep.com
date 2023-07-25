@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Subject</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Subject</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="subject">Subject Name:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <select id="course" name="course" required>
+                    <option value="" selected disabled>Select course</option>
+                    {% for course in courses %}
+                    <option value="{{ course.id }}">{{ course.course_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="staff">Staff:</label>
+                <select id="staff" name="staff" required>
+                    <option value="" selected disabled>Select staff</option>
+                    {% for staff in staffs %}
+                    <option value="{{ staff.admin.id }}">{{ staff.admin.first_name }} {{ staff.admin.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Add Subject</button>
+        </form>
+    </div>
+</body>
+</html>

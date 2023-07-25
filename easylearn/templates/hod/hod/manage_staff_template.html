@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Staff</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .action-btn {
+        padding: 5px 10px;
+        font-size: 14px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .action-btn.edit-btn {
+        background-color: #17a2b8;
+    }
+
+    .action-btn.delete-btn {
+        background-color: #dc3545;
+    }
+
+    .action-btn:hover {
+        background-color: #0056b3;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Staff</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+            {% for staff in staffs %}
+            <tr>
+                <td>{{ staff.admin.first_name }} {{ staff.admin.last_name }}</td>
+                <td>{{ staff.admin.email }}</td>
+                <td>{{ staff.address }}</td>
+                <td class="actions">
+                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn delete-btn">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

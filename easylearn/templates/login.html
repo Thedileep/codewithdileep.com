@@ -1,0 +1,82 @@
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+        <!-- Your head content here -->
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:lightgrey;
+            color:black;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color:teal;
+            
+        }
+        .form-container h2 {
+            text-align: center;
+            color:blue;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="password"]{
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .required-symbol {
+            color: red;
+            margin-left: 5px;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="form-container">
+            <h2>Login</h2>
+        <form action="{% url 'login_view' %}" method="post">
+            {% csrf_token %}
+    
+            <div class="form-group">
+                <label for="username">Username:<span class="required-symbol">*</span></label>
+                <input type="text" id="username" name="username" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="password">Password:<span class="required-symbol">*</span></label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="login">
+            </div>
+        </form>
+    </div>
+    </body>
+    </html>
+    

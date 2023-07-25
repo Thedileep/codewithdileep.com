@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <style>
+        body {
+        background-color: lightgrey;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #black;
+            background-color:violet;
+        }
+        .form-container h2 {
+            text-align: center;
+            color:blue;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="district"],
+        .form-group input[type="pin"],
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group select {
+            height: 38px;
+        }
+        .form-group textarea {
+            width: 100%;
+            height: 100px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .required-symbol {
+            color: red;
+            margin-left: 5px;
+        }
+        .instruction {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Admission Form</h2>
+        <p class="instruction">Fields marked with <span class="required-symbol">*</span> are required.</p>
+        <form action="{% url 'submit_admission_form' %}" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="full_name">First Name:<span class="required-symbol">*</span></label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div class="form-group">
+                <label for="full_name">Last Name:<span class="required-symbol">*</span></label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:<span class="required-symbol">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone:<span class="required-symbol">*</span></label>
+                <input type="text" id="phone" name="phone" required maxlength="10" pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course:<span class="required-symbol">*</span></label>
+                <select id="course" name="course" required>
+                    <option value="">Select a course</option>
+                    <option value="Computer Science">Python</option>
+                    <option value="Electronics Engineering">ADCA</option>
+                    <option value="Mechanical Engineering">AUTOCAD</option>
+                </select>
+            </div>
+            <!--- India states -->
+        <div class="form-group">
+            <label for="course">State:<span class="required-symbol">*</span></label>
+        <select id="country_state" name="country_state">
+            <option value="">Select state</option>
+            <option value="AN">Andaman and Nicobar Islands</option>
+            <option value="AP">Andhra Pradesh</option>
+            <option value="AR">Arunachal Pradesh</option>
+            <option value="AS">Assam</option>
+            <option value="BR">Bihar</option>
+            <option value="CH">Chandigarh</option>
+            <option value="CT">Chhattisgarh</option>
+            <option value="DN">Dadra and Nagar Haveli</option>
+            <option value="DD">Daman and Diu</option>
+            <option value="DL">Delhi</option>
+            <option value="GA">Goa</option>
+            <option value="GJ">Gujarat</option>
+            <option value="HR">Haryana</option>
+            <option value="HP">Himachal Pradesh</option>
+            <option value="JK">Jammu and Kashmir</option>
+            <option value="JH">Jharkhand</option>
+            <option value="KA">Karnataka</option>
+            <option value="KL">Kerala</option>
+            <option value="LA">Ladakh</option>
+            <option value="LD">Lakshadweep</option>
+            <option value="MP">Madhya Pradesh</option>
+            <option value="MH">Maharashtra</option>
+            <option value="MN">Manipur</option>
+            <option value="ML">Meghalaya</option>
+            <option value="MZ">Mizoram</option>
+            <option value="NL">Nagaland</option>
+            <option value="OR">Odisha</option>
+            <option value="PY">Puducherry</option>
+            <option value="PB">Punjab</option>
+            <option value="RJ">Rajasthan</option>
+            <option value="SK">Sikkim</option>
+            <option value="TN">Tamil Nadu</option>
+            <option value="TG">Telangana</option>
+            <option value="TR">Tripura</option>
+            <option value="UP">Uttar Pradesh</option>
+            <option value="UT">Uttarakhand</option>
+            <option value="WB">West Bengal</option>
+            </select>
+         </div>
+            <div class="form-group">
+                <label for="district">District:<span class="required-symbol">*</span></label>
+               <input type="text" id="district" required>
+            </div>
+            <div class="form-group">
+                <label for="pin">Pin Code:<span class="required-symbol">*</span></label>
+               <input type="text" id="pin" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:<span class="required-symbol">*</span></label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admission Form Details</title>
+</head>
+<body>
+    <h1>Admission Form Details</h1>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Course</th>
+            <th>Address</th>
+        </tr>
+        {% for admission_form in admission_forms %}
+        <tr>
+            <td>{{ admission_form.first_name }}</td>
+            <td>{{ admission_form.last_name }}</td>
+            <td>{{ admission_form.email }}</td>
+            <td>{{ admission_form.phone }}</td>
+            <td>{{ admission_form.course }}</td>
+            <td>{{ admission_form.address }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

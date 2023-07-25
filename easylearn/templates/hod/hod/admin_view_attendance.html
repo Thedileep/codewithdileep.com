@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin View Attendance</title>
+    <style>
+        /* CSS styles for admin_view_attendance.html */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select,
+button {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#attendanceDetails {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin View Attendance</h1>
+        <form id="viewAttendanceForm">
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <select id="subject" name="subject" required>
+                    <option value="" selected disabled>Select subject</option>
+                    {% for subject in subjects %}
+                        <option value="{{ subject.id }}">{{ subject.subject_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="session_year">Session Year:</label>
+                <select id="session_year" name="session_year" required>
+                    <option value="" selected disabled>Select session year</option>
+                    {% for session_year in session_years %}
+                        <option value="{{ session_year.id }}">{{ session_year.session_start_year }}-{{ session_year.session_end_year }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="attendanceDetails" class="form-group">
+                <!-- Attendance details will be populated here using JavaScript -->
+            </div>
+            <button type="submit" class="btn btn-primary">View Attendance</button>
+        </form>
+    </div>
+    <script src="{% static 'admin_view_attendance.js' %}"></script>
+</body>
+</html>

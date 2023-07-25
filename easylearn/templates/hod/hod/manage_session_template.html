@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Session Years</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .delete-link {
+        color: #dc3545;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Session Years</h1>
+        <table>
+            <tr>
+                <th>Session Year</th>
+                <th>Action</th>
+            </tr>
+            {% for session_year in session_years %}
+            <tr>
+                <td>{{ session_year.session_start_year }} - {{ session_year.session_end_year }}</td>
+                <td>
+                    <a href="{% url 'edit_session' session_year.id %}">Edit</a> |
+                    <a href="{% url 'delete_session' session_year.id %}" class="delete-link">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

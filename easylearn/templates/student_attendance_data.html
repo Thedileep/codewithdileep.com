@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Attendance Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance Data for {{ subject_obj.subject_name }}</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        {% for attendance_report in attendance_reports %}
+        <tr>
+            <td>{{ attendance_report.attendance_id.attendance_date }}</td>
+            <td>{{ attendance_report.get_status_display }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

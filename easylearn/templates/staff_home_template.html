@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Home</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #444;
+    margin-top: 20px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Styles for the subject list */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* Styles for the welcome message */
+.welcome-message {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styles for the footer */
+footer {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+</style>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>Number of Students: {{ students_count }}</p>
+    <p>Number of Subjects: {{ subject_count }}</p>
+    <p>Total Attendance Count: {{ attendance_count }}</p>
+
+    <h2>Subjects:</h2>
+    <ul>
+        {% for subject in subjects %}
+            <li>{{ subject.subject_name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Students Attendance:</h2>
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Attendance Present</th>
+            <th>Attendance Absent</th>
+        </tr>
+        {% for student, present_count, absent_count in student_list|zip(attendance_present_list, attendance_absent_list) %}
+        <tr>
+            <td>{{ student }}</td>
+            <td>{{ present_count }}</td>
+            <td>{{ absent_count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
