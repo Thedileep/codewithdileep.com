@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ quiz.title }} Quiz Result</title>
+</head>
+<body>
+    <h1>{{ quiz.title }} Quiz Result</h1>
+    
+    <p>Your score is: {{ score }} out of {{ questions.count }}</p>
+
+    <p><a href="{% url 'quiz' quiz.id %}">Back to Quiz</a></p>
+</body>
+</html>

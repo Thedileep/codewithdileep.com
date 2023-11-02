@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to the Quiz Website</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+    <h1>Welcome to the Quiz Website</h1>
+    <p><a href="{% url 'quiz' quiz_id=1 %}">Start Quiz</a></p>
+</body>
+</html>

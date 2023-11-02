@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ quiz.title }} Quiz</title>
+    <style>
+        /* quiz_styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #007BFF;
+}
+
+form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+    <h1>{{ quiz.title }} Quiz</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {% for question in questions %}
+        <fieldset>
+            <legend>{{ question.text }}</legend>
+            {% for choice in question.choice_set.all %}
+            <label>
+                <input type="radio" name="question_{{ question.id }}" value="{{ choice.id }}">
+                {{ choice.text }}
+            </label><br>
+            {% endfor %}
+        </fieldset>
+        {% endfor %}
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
